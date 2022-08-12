@@ -1,11 +1,11 @@
-FROM node:14.19.0
+FROM node:12.13.0
 
 RUN mkdir /usr/src/app
 WORKDIR /usr/src/app
 
-ENV PATH /usr/src/app/node_modules/.bin:$PATH
+# ENV PATH /usr/src/app/node_modules/.bin:$PATH
 
-COPY package*.json /usr/src/app
+COPY package.json /usr/src/app
 
 RUN npm install
 
