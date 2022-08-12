@@ -14,7 +14,7 @@ env:
   - secure: "mKkBV7fC2+b5Iqe3a5YjCAHY5RUuCtQCyV9sxxFWUlLwWydTuVuNvEgWMpKhXC03WPv7jH8M+SRrFXAsNJZSxSR3TozruYDaKUT5h6JJD7EVCyBerfY4DCh/wYb2DBIETaGQipjXVBA2HoJYrkUd7IjaMKMF8B0+KTUXhVQLe5ISdAPaZIHLUdfruRSL7RSVkN4Vq8cLaB+0i/qTDQHUocp1ynvmmh2lZrZUa2BPmEG+nWn2FuR2W0NHefgPaPDNF1HMBO4Dwzmxch1mZPxqx+DUwbSSi5MMc/gDHNOR0MZb187DP4BkNrpxy+kATempOfONEpsm/l0yUdznetJt3Nq3iMJ3I1wtB6TPdmF9gQ9gRfxaeothtzTJInw8iFrv8cZuYWeIertnHSvm4qJnkoLCgkpLvleZT6td1p9LcleVXzSu/uLhItGhGmzUTROU5BngpWO4qkGESa0rzwARU/ABR4hOf2RZRI6f2jZ/NuZYkY/OTsFWkq70G7IonUIsieKXVYlXXL57u8+3G+9QOd4kKFXxSc6v7aJW6l712V/z5FnInIUVde5jygfsC8Ci4uPQ2GnUfgsX7sG+JhXEr9PS53bS1c5QAZ+kCRFGC9TxQrZMbt0eyEsK0Yq5qemB+BX61RN9Owh+a9UWmdYsfAqPMQAPigCg/AJA4InP2AM="
 before_install:
 - pip install  awscli
-# - export PATH=$PATH:$HOME/.local/bin
+- export PATH=$PATH:$HOME/.local/bin
 deploy:
   provider: script
   script: ./push.sh
