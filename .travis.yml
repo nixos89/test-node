@@ -1,7 +1,20 @@
+language: node_js
 sudo: required
 services:
-  - docker
-
-script:
-  - docker build -t nixos89/node .
-  - docker images nixos89/node
+- docker
+env:
+  global:
+  - DOCKER_REPO="ml-app"
+  - AWS_DEFAULT_REGION="us-east-1"
+  - DOCKER_USERNAME="AWS"
+  - IMAGE_REPO_URL="140124015873.dkr.ecr.us-east-1.amazonaws.com"
+  - secure: "Xzu3lQy6uBKh7tLy2rcAWIQtxtVohZZVkzbULnskzfNCjFCn+V6r8TxGrFvWjuN4LLHsk4M0hlvrA6jzn0h2XxoDgGSCwr8Pi5xTUZl1WHYamHo6aN7H1ksYIcYneeMLHFauejF3ER/dXhkeclHqEI80ktIgdIDFLvSVV4+mVxncVLnhL/j4B50Zuc9Qk0IciMgCVIOH7lJGVV9K3LkvIUmrg/lTIDgK1pUneXqt/tECS3hfWwSmBya72UAl9HSKBZF33X+9iKJ6VDd3ozk6c9W7ND4DUCbe5YGf73HjhIH13RNCie735Ja+R6bbhBgVJBL+uZbq/XQSbjWjVVvLBsJ+ASQEmXpJEA/uJkxEuBQKhdlw0zBlkUCbBYlxIzWF0b2bHZaJA7KQvMBDch3ONprYrxwJBpXewy9Dbyl3ig9NT0UrcXm7bqQjjlqcOE46sV+9eAnd81f/BvJyVGCo7eZuzfAaJl+mBawcEgflmDcKvLaNliJTOmokICjIr6wuBlukOlistOoDhujyh+tfiMuJPMIovOFFAoWhL3Nn2ZhsMFVVvOnoArsTOadfwN63/kRWNyqYIHlpBtyB3v9g4O1f+Oyf9Qi+88vejT2oe4oqW/70KqYsyfMBA+4UF1Pn1QKQb6fvyHU+mU0Bfl4EuS8BECFS0LORybcRgVlwSfw="
+  - secure: "mKkBV7fC2+b5Iqe3a5YjCAHY5RUuCtQCyV9sxxFWUlLwWydTuVuNvEgWMpKhXC03WPv7jH8M+SRrFXAsNJZSxSR3TozruYDaKUT5h6JJD7EVCyBerfY4DCh/wYb2DBIETaGQipjXVBA2HoJYrkUd7IjaMKMF8B0+KTUXhVQLe5ISdAPaZIHLUdfruRSL7RSVkN4Vq8cLaB+0i/qTDQHUocp1ynvmmh2lZrZUa2BPmEG+nWn2FuR2W0NHefgPaPDNF1HMBO4Dwzmxch1mZPxqx+DUwbSSi5MMc/gDHNOR0MZb187DP4BkNrpxy+kATempOfONEpsm/l0yUdznetJt3Nq3iMJ3I1wtB6TPdmF9gQ9gRfxaeothtzTJInw8iFrv8cZuYWeIertnHSvm4qJnkoLCgkpLvleZT6td1p9LcleVXzSu/uLhItGhGmzUTROU5BngpWO4qkGESa0rzwARU/ABR4hOf2RZRI6f2jZ/NuZYkY/OTsFWkq70G7IonUIsieKXVYlXXL57u8+3G+9QOd4kKFXxSc6v7aJW6l712V/z5FnInIUVde5jygfsC8Ci4uPQ2GnUfgsX7sG+JhXEr9PS53bS1c5QAZ+kCRFGC9TxQrZMbt0eyEsK0Yq5qemB+BX61RN9Owh+a9UWmdYsfAqPMQAPigCg/AJA4InP2AM="
+before_install:
+- pip install  awscli
+# - export PATH=$PATH:$HOME/.local/bin
+deploy:
+  provider: script
+  script: ./push.sh
+  on: 
+    branch: master
